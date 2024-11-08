@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gerar Venda - Sistema de Controle de Estoque</title>
+    <link rel="stylesheet" href="vendas.css">
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <h1>Controle de Estoque</h1>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="index.html">Início</a></li>
+                <li><a href="cadastro.html">Estoque</a></li>
+                <li><a href="vendas.html">Vendas</a></li>
+                <li><a href="#">Caixa</a></li>
+                <li><a href="#">Relatórios</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="form-container">
+            <h2>Gerar Venda</h2>
+            <form action="#" method="post">
+                <div class="form-group">
+                    <label for="product-select">Selecione o Produto:</label>
+                    <select id="product-select" name="product-select" required>
+                        <option value="">Selecione...</option>
+                        <option value="produto-a">Produto A</option>
+                        <option value="produto-b">Produto B</option>
+                        <option value="produto-c">Produto C</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="quantity">Quantidade:</label>
+                    <input type="number" id="quantity" name="quantity" required min="1" step="1">
+                </div>
+
+                <div class="form-group">
+                    <label for="total-price">Preço Total (R$):</label>
+                    <input type="text" id="total-price" name="total-price" readonly>
+                </div>
+
+                <button type="button" class="btn-calculate" onclick="calculateTotal()">Calcular Total</button>
+                <button type="submit" class="btn-submit">Registrar Venda</button>
+            </form>
+        </section>
+
+        <section class="sales-history">
+            <h2>Histórico de Vendas</h2>
+            
+            <table>
+                <thead>
+                    <tr>
+                        <th>Data</th>
+                        <th>Produto</th>
+                        <th>Quantidade</th>
+                        <th>Preço Total (R$)</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Exemplo de vendas registradas -->
+                    <tr>
+                        <td>05/11/2024</td>
+                        <td>Produto A</td>
+                        <td>2</td>
+                        <td>100,00</td>
+                        <td><span class="status-pago">Pago</span></td>
+                    </tr>
+                    <tr>
+                        <td>04/11/2024</td>
+                        <td>Produto B</td>
+                        <td>1</td>
+                        <td>150,00</td>
+                        <td><span class="status-pago">Pago</span></td>
+                    </tr>
+                    <tr>
+                        <td>03/11/2024</td>
+                        <td>Produto C</td>
+                        <td>3</td>
+                        <td>225,00</td>
+                        <td><span class="status-pendente">Pendente</span></td>
+                    </tr>
+                    <tr>
+                        <td>02/11/2024</td>
+                        <td>Produto A</td>
+                        <td>1</td>
+                        <td>50,00</td>
+                        <td><span class="status-cancelado">Cancelado</span></td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Sistema de Controle de Estoque. Todos os direitos reservados.</p>
+    </footer>
+
+    <script>
+        // Função para calcular o total da venda
+        function calculateTotal() {
+            const productSelect = document.getElementById('product-select');
+            const quantity = document.getElementById('quantity').value;
+            const totalPriceField = document.getElementById('total-price');
+            
+            // Valores de preço dos produtos (isso pode ser dinâmico conforme o banco de dados)
+            const prices = {
+                'produto-a': 50,
+                'produto-b': 100,
+                'produto-c': 75
+            };
+
+            const product = productSelect.value;
+            const price = prices[product];
+            
+            if (product && quantity > 0) {
+                const total = price * quantity;
+                totalPriceField.value = total.toFixed(2);
+            } else {
+                totalPriceField.value = '';
+            }
+        }
+    </script>
+</body>
+</html>
