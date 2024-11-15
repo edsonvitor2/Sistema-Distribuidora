@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cadastro de Produto - Sistema de Controle de Estoque</title>
-    <link rel="stylesheet" href="cadastro.css">
+    <link rel="stylesheet" href="../styles/cadastro.css">
 </head>
 <body>
     <header>
@@ -13,9 +13,9 @@
         </div>
         <nav>
             <ul>
-                <li><a href="index.html">Início</a></li>
-                <li><a href="cadastro.html">Estoque</a></li>
-                <li><a href="vendas.html">Vendas</a></li>
+                <li><a href="./inicio.html">Início</a></li>
+                <li><a href="./cadastro.html">Estoque</a></li>
+                <li><a href="./vendas.html">Vendas</a></li>
                 <li><a href="#">Caixa</a></li>
                 <li><a href="#">Relatórios</a></li>
             </ul>
@@ -32,7 +32,7 @@
                 </div>
 
                 <div class="form-group">
-                    <label for="product-quantity">Quantidade em Estoque:</label>
+                    <label for="product-quantity" id="label-qtd">Quantidade em Estoque:</label>
                     <input type="number" id="product-quantity" name="product-quantity" required min="1">
                 </div>
 
@@ -46,7 +46,7 @@
                     <textarea id="product-description" name="product-description" rows="4" placeholder="Descrição detalhada do produto"></textarea>
                 </div>
 
-                <button type="submit" class="btn-submit">Cadastrar Produto</button>
+                <button type="button" class="btn-submit">Cadastrar Produto</button>
             </form>
         </section>
 
@@ -63,38 +63,8 @@
                         <th>Ações</th>
                     </tr>
                 </thead>
-                <tbody>
-                    <!-- Exemplo de produtos -->
-                    <tr>
-                        <td>Produto A</td>
-                        <td>100</td>
-                        <td>50,00</td>
-                        <td>Descrição do Produto A</td>
-                        <td>
-                            <button class="btn-edit">Editar</button>
-                            <button class="btn-delete">Excluir</button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>Produto B</td>
-                        <td>50</td>
-                        <td>100,00</td>
-                        <td>Descrição do Produto B</td>
-                        <td>
-                            <button class="btn-edit">Editar</button>
-                            <button class="btn-delete">Excluir</button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>Produto C</td>
-                        <td>30</td>
-                        <td>75,00</td>
-                        <td>Descrição do Produto C</td>
-                        <td>
-                            <button class="btn-edit">Editar</button>
-                            <button class="btn-delete">Excluir</button>
-                        </td>
-                    </tr>
+                <tbody id="corpo-tabela">
+                
                 </tbody>
             </table>
         </section>
@@ -103,5 +73,12 @@
     <footer>
         <p>&copy; 2024 Sistema de Controle de Estoque. Todos os direitos reservados.</p>
     </footer>
+
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-database.js"></script>
+
+    <script src="/src/Scripts/firebaseConfig.js"></script>
+    <script src="/src/Scripts/classes/produtos.js"></script>
 </body>
 </html>
