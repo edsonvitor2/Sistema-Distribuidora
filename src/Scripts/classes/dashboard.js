@@ -1,15 +1,7 @@
 class Usuarios {
     constructor() {
-        //this.botoes();
+        this.listarProduto();
         this.monitorarAuthState();
-    }
-
-    botoes(){
-        let logar = document.querySelector("");
-        logar.addEventListener("click", event=>{
-            event.preventDefault();
-
-        });
     }
 
     monitorarAuthState() {
@@ -24,6 +16,23 @@ class Usuarios {
             } else {
                 console.log("Nenhum usuário logado.");
             }
+        });
+    }
+
+    listarProduto() {
+        var totalProdutos = 0;
+        const produtoRef = firebase.database().ref('Produtos'); // Referência à chave Produtos
+        produtoRef.once('value', snapshot => {
+    
+            snapshot.forEach(item => {
+                const key = item.key; // Chave do produto
+                const produto = item.val(); // Dados do produto
+
+                totalProdutos++;
+
+                document.querySelector("#total-produtos").innerHTML = `${totalProdutos} Produtos`
+            });
+            console.log(totalProdutos);
         });
     }
     
